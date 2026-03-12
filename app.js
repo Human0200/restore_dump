@@ -28,7 +28,7 @@ async function startRestore() {
             log('restore', 'Восстановление запущено');
             restoreTimer = setInterval(() => pollStatus('restore'), 2000);
         } else {
-            log('restore', 'Ошибка запуска', true);
+            log('restore', data.error || 'Ошибка запуска', true);
             btn.disabled = false;
             btn.textContent = 'Запустить восстановление';
         }
@@ -52,7 +52,7 @@ async function startDump() {
             log('dump', 'Создание дампа запущено');
             dumpTimer = setInterval(() => pollStatus('dump'), 2000);
         } else {
-            log('dump', 'Ошибка запуска', true);
+            log('dump', data.error || 'Ошибка запуска', true);
             btn.disabled = false;
             btn.textContent = 'Создать дамп';
         }
@@ -165,4 +165,3 @@ function log(ns, msg, isErr = false) {
     logEl.appendChild(div);
     logEl.scrollTop = logEl.scrollHeight;
 }
-

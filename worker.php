@@ -2,6 +2,22 @@
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/status.php';
 
+
+// ── Защита от параллельного запуска ──────────────────────────────────────────
+$lockFile = __DIR__ . '/restore.lock';
+$lock = fopen($lockFile, 'c');
+if (!$lock || !flock($lock, LOCK_EX | LOCK_NB)) {
+    exit(0);
+}
+ftruncate($lock, 0);
+fwrite($lock, (string)getmypid());
+fflush($lock);
+register_shutdown_function(function() use ($lock, $lockFile) {
+    flock($lock, LOCK_UN);
+    fclose($lock);
+    @unlink($lockFile);
+});
+// ─────────────────────────────────────────────────────────────────────────────
 $startTime = time();
 $totalSize = filesize(DUMP_FILE);
 $errors = [];
