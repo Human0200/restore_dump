@@ -1,0 +1,192 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f0f2f5;
+    margin: 0;
+    padding: 24px 16px;
+    min-height: 100vh;
+    color: #222;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+}
+
+h1 { margin: 0 0 8px; font-size: 22px; color: #111; }
+
+.db-info {
+    display: flex;
+    gap: 24px;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Action cards */
+.actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.action-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 20px;
+    background: #fafafa;
+}
+
+.action-card--warn {
+    border-color: #fde68a;
+    background: #fffbeb;
+}
+
+.action-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #111;
+    font-family: monospace;
+}
+
+.action-desc {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+/* Buttons */
+.btn {
+    border: none;
+    padding: 10px 22px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    width: 100%;
+}
+.btn:hover:not(:disabled) { opacity: 0.85; transform: translateY(-1px); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+.btn-secondary { background: #4f46e5; color: #fff; }
+.btn-danger    { background: #dc2626; color: #fff; }
+.btn-sm        { width: auto; padding: 6px 14px; font-size: 12px; }
+
+/* Operation block */
+.operation-block { display: none; }
+.operation-block.visible { display: block; }
+
+/* Progress */
+.progress-wrap { margin-bottom: 20px; }
+.progress-bar {
+    width: 100%;
+    height: 24px;
+    background: #f3f4f6;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #e5e7eb;
+}
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4f46e5, #7c3aed);
+    transition: width 0.4s ease;
+    width: 0%;
+}
+.progress-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Stats */
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.stat-card {
+    background: #f8f9fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+}
+.stat-card--warn { border-color: #fde68a; background: #fffbeb; }
+.stat-card--ok   { border-color: #bbf7d0; background: #f0fdf4; }
+.stat-card--err  { border-color: #fecaca; background: #fef2f2; }
+
+.stat-val  { font-size: 20px; font-weight: 700; color: #4f46e5; }
+.stat-card--warn .stat-val { color: #b45309; }
+.stat-card--ok   .stat-val { color: #15803d; }
+.stat-card--err  .stat-val { color: #dc2626; }
+.stat-name { font-size: 11px; color: #888; margin-top: 3px; }
+
+/* Current line */
+.current-line {
+    font-size: 12px;
+    font-family: monospace;
+    color: #555;
+    background: #f8f9fa;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    min-height: 32px;
+}
+
+/* Results table */
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+.results-table th {
+    text-align: left;
+    padding: 8px 10px;
+    background: #f8f9fa;
+    border-bottom: 2px solid #e5e7eb;
+    color: #555;
+    font-weight: 600;
+}
+.results-table td {
+    padding: 7px 10px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: top;
+}
+.results-table tr:hover td { background: #fafafa; }
+
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+}
+.badge-broken   { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+.badge-repaired { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+.badge-failed   { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
